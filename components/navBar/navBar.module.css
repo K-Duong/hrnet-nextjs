@@ -1,6 +1,6 @@
 .navBar {
   flex: 0 0 auto;
-}
+  }
 .logo {
   border-radius: 20%;
   box-shadow: var(--mui-shadows-3);

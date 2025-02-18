@@ -1,32 +1,26 @@
 "use client";
-import styles from "./navBar.module.css";
-
-// export default function NavBar() {
-//   return <div className= {styles.navBar}>Nav bar</div>
-// }
-
 import * as React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from '@mui/icons-material/Menu';
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import Image from "next/image";
-import { PATHS } from "@/app/const/constant";
-
-import logo from "@/public/assets/logo.png";
-import Link from "next/link";
 import { useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useTheme } from "@emotion/react";
-// import AdbIcon from '@mui/icons-material/Adb';
+
+import logo from "@/public/assets/logo.png";
+import { PATHS } from "@/app/const/constant";
+
+import styles from "./navBar.module.css";
 
 const settings = ["Dashboard", "Logout"];
 
@@ -38,6 +32,15 @@ const LinksWrapper = styled("div")<LinksWrapperProps>(
     display: matchedQuery ? "none" : "flex",
   })
 );
+
+const upperCaseString = (str: string) => {
+  if (str.includes(" ")) {
+    const arr = str.split(" ");
+    return arr.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join (" ")
+  } else {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+}
 
 function NavBar() {
   const theme = useTheme();
@@ -99,8 +102,8 @@ function NavBar() {
               {PATHS.map((path) => (
                 <Link href={path.path} key={path.name}>
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography sx={{ textAlign: "center" }}>
-                      {path.name}
+                    <Typography sx={{ textAlign: "center", color: "#2F2F2F" }}>
+                      {upperCaseString(path.name)}
                     </Typography>
                   </MenuItem>
                 </Link>
