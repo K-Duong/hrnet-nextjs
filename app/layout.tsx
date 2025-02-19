@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProviderWrapper >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body>
           <AppRouterCacheProvider>
             <NavBar />
