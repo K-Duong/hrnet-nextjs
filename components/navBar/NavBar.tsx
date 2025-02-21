@@ -21,6 +21,7 @@ import logo from "@/public/assets/logo.png";
 import { PATHS } from "@/app/const/constant";
 
 import styles from "./navBar.module.css";
+import { upperFirstLetterOfString } from "@/utils/text";
 
 const settings = ["Dashboard", "Logout"];
 
@@ -33,14 +34,7 @@ const LinksWrapper = styled("div")<LinksWrapperProps>(
   })
 );
 
-const upperCaseString = (str: string) => {
-  if (str.includes(" ")) {
-    const arr = str.split(" ");
-    return arr.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join (" ")
-  } else {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-  }
-}
+
 
 function NavBar() {
   const theme = useTheme();
@@ -103,7 +97,7 @@ function NavBar() {
                 <Link href={path.path} key={path.name}>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography sx={{ textAlign: "center", color: "#2F2F2F" }}>
-                      {upperCaseString(path.name)}
+                      {upperFirstLetterOfString(path.name)}
                     </Typography>
                   </MenuItem>
                 </Link>
