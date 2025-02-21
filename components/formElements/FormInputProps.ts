@@ -6,6 +6,7 @@ name: Path<T>
 control?: Control<T>
 label?: string,
 id: string,
-rules?: RegisterOptions<T, Path<T>>
+rules?: RegisterOptions<T, Path<T>> , 
+placeholder?: string
 
 }
