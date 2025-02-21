@@ -29,13 +29,13 @@ export const InputTextField = <T extends FieldValues>({
           onChange={onChange}
           onBlur={(e) => {
             const trimedValue = e.target.value.toLowerCase().trim();
-            const arrString = trimedValue.split(" ");
-            console.log(arrString);
+            // const arrString = trimedValue.split(" ");
+            // console.log(arrString);
 
             // not allow these cases: "word- word"/ "word - word" or "word -word"
             const regex = /(?:\s+-|-\s+)/
             const newValue = regex.test(trimedValue) ? trimedValue.replace(regex,"-") : trimedValue
-            console.log("new string:",  newValue);
+            // console.log("new string:",  newValue);
             
             onChange(upperFirstLetterOfString(newValue));
           }}
